@@ -1,46 +1,26 @@
-# APP-SERVER
-- докер контейнер c application
-- докер контейнер c Prometheus (мониторит порт и URL приложения)
-
-# JENKINS или GitHubActions
-- скачать исходники приложения с github
-- протестировать и собрать jar
-- сделать докер образ, отправить на GitHub Container Registry
-- тригером (после обновления ветки main) пересобрать контейнер на APP-SERVER
-
-
-# DOCKER:
-docker build -t spring-boot-image:1 .
-docker run --name spring-boot-container -p 8080:8181 -t spring-boot-image:1
-
-# TERRAFORM:
-создание инфраструктуры для развертывания APP-SERVER и JENKINS
-
-# APP URL:
-http://localhost:8080/helloworld/hello
-
-
-
-
-
-# NOTES:
-Скачать и собрать приложение
+1. JENKINS: Отправка образа после создания в ghcr.io
+# DEPENDENCIES: apt install maven -y
 git clone https://github.com/bokhanych/spring-boot.git
-cd spring-boot/SpringBootHelloWorld
-mvn package
+mvn package -f spring-boot/SpringBootHelloWorld/pom.xml
 
-JAR файл: $(pwd)/target/SpringBootHelloWorld-0.0.1-SNAPSHOT.jar
+bash .ghcr_login.sh #dockerhub login
+docker build -t ghcr.io/bokhanych/spring-boot-image:latest .
+docker push ghcr.io/bokhanych/spring-boot-image:latest
+
+ДОПИЛИТЬ: 
+- тесты сборки приложения
+- git hub actions - trigger to BUILD and PULL to APP-SERVER latest image
 
 
-# Задачи:
-1. Отправка образа после создания в регистри.
+2. APP-SERVER: Скачать docker-image приложения и запустить
+
+bash .ghcr_login.sh #dockerhub login
+docker pull ghcr.io/bokhanych/spring-boot-image:latest
+docker run --name spring-boot-container -p 8080:8181 -t ghcr.io/bokhanych/spring-boot-image:latest
+
+ДОПИЛИТЬ: 
+- контейнер с мониторингом url и java порта приложения http://localhost:8080/helloworld/hello
 
 
-
-# MANUALS:
-
-GitHub Actions - Основы Автоматизации - DevOps - GitOps
-https://www.youtube.com/watch?v=Yg5rpke79X4
-
-ghcr.io
-https://docs.github.com/ru/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+3. TERRAFORM:
+- создание инфраструктуры для развертывания APP-SERVER и JENKINS
