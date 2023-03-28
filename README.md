@@ -23,3 +23,8 @@
 
 3. TERRAFORM:
 - создание инфраструктуры для развертывания APP-SERVER и JENKINS
+
+
+*** Tasks:
+- запуск приложения в фоне;
+- создать pipeline в jenkins; 
