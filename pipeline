@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Git') {
             steps {
-                git branch: 'main', url: '${GIT_REPO}'
+                sh "git clone ${GIT_REPO}"
             }
         }
         stage ('ls -la'){
