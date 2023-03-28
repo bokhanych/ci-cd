@@ -1,2 +1,4 @@
 /spring-boot
 /.ghcr_login.sh
+terraform*
+.terraform*

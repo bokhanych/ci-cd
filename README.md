@@ -8,7 +8,7 @@
 
 ДОПИЛИТЬ: 
 - тесты сборки приложения
-- git hub actions - trigger to BUILD and PULL to APP-SERVER latest image
+- Jenkins pipelines - trigger to BUILD and PULL to APP-SERVER latest image
 
 #
 

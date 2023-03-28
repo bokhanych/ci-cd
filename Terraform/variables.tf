@@ -3,12 +3,20 @@ variable "instance_type" {
     default = "t2.micro"
 }
 
-variable "app-server_ports" {
+variable "java" {
     type = list
     default = ["22", "8080"]
 }
 
-variable "jenkins_ports" {
+variable "aws_key_pair_name" {
+  type = string
+  default = "tf_user"
+}
+
+
+/*
+variable "app-server_ports" {
     type = list
     default = ["22", "8080"]
 }
+*/
