@@ -26,4 +26,5 @@
 
 
 *** Tasks:
+- сделать автологин ghcr_login.sh;
 - создать pipeline в jenkins; 
