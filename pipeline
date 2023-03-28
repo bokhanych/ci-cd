@@ -1,32 +1,25 @@
 pipeline {
     agent any
-    
-    environment {
-        DOCKER_CONTAINER_NAME = "spring-boot-container"
-        DOCKER_IMAGE_NAME = "spring-boot-image"
-        DOCKER_IMAGE_TAG = "1"
-        DOCKER_INTERNAL_PORT = "8181"
-        DOCKER_EXTERNAL_PORT = "8080"
 
-    }
+    environment {
+        GIT_REPO = "https://github.com/bokhanych/spring-boot.git"
+        APP_PATH = "spring-boot/SpringBootHelloWorld/pom.xml"
+    }   
 
     stages {
-
         stage('Clone Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/bokhanych/spring-boot.git'
+                git branch: 'main', url: ${GIT_REPO}
             }
         }
-
-        stage ('Docker build'){
+        stage ('ls -la'){
             steps {
-                sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                sh "ls -la"
             }
         }
-
-        stage ('Docker run'){
+        stage ('Deploy app'){
             steps {
-                sh "docker run --name ${DOCKER_CONTAINER_NAME} -p ${DOCKER_EXTERNAL_PORT}:${DOCKER_INTERNAL_PORT} -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} -d"
+                sh "mvn package -f ${APP_PATH}"
             }
         }
 
