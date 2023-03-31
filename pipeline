@@ -1,27 +1,32 @@
 pipeline {
     agent any
-
-    environment {
-        GIT_REPO = "https://github.com/bokhanych/spring-boot.git"
-        APP_PATH = "spring-boot/SpringBootHelloWorld/pom.xml"
-    }   
-
+    
     stages {
         stage('Clone Git') {
             steps {
-                sh "git clone ${GIT_REPO}"
-            }
-        }
-        stage ('ls -la'){
-            steps {
-                sh "ls -la"
+                sh "git clone https://github.com/bokhanych/spring-boot.git"
             }
         }
         stage ('Deploy app'){
             steps {
-                sh "mvn package -f ${APP_PATH}"
+                sh "mvn package -f spring-boot/SpringBootHelloWorld/pom.xml"
             }
         }
-
+        stage ('Docker Build'){
+            steps {
+               sh "docker build spring-boot/ -t ghcr.io/bokhanych/spring-boot-image:latest"
+            }
+        }
+        stage ('Docker Push to Registry'){
+            steps {
+                sh "bash /home/.ghcr_login.sh"
+                sh "docker push ghcr.io/bokhanych/spring-boot-image:latest"
+            }
+        }
+        stage ('Clear'){
+            steps {
+                sh "rm -r spring-boot"
+            }
+        }
     }
 }

@@ -24,6 +24,11 @@
 3. TERRAFORM:
 - создание инфраструктуры для развертывания APP-SERVER и JENKINS
 
+NOTES for server JENKINS:
+.ghcr_login.sh.example - скрипт для логина на github, убрать расширение .example, поместить на jenkins сервер в /home/
+usermod -aG docker root
+apt install default-jdk maven net-tools -y
+sudo chmod 666 /var/run/docker.sock
 
 *** Tasks:
 - сделать автологин ghcr_login.sh;
