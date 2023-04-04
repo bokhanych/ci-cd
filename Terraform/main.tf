@@ -3,27 +3,22 @@ provider "aws" {
   region                  = "eu-central-1"
 }
 
-resource "aws_instance" "jenkins" {
-    ami = data.aws_ami.latest_ubuntu.id
-    instance_type = var.instance_type
-    tags = { Name = "JENKINS" }
-    vpc_security_group_ids = [aws_security_group.java.id]
-    key_name        = data.aws_key_pair.selected.key_name
-    user_data = "${file("jenkins-install.sh")}"
-}
-
 resource "aws_instance" "app-server" {
     ami = data.aws_ami.latest_ubuntu.id
     instance_type = var.instance_type
     tags = { Name = "APP-SERVER" }
     vpc_security_group_ids = [aws_security_group.java.id]
     key_name        = data.aws_key_pair.selected.key_name
-    user_data = "${file("docker-install.sh")}"
+    user_data = "${file("uploads/docker-install.sh")}"
+    provisioner "file" {
+      source      = "uploads/myapp.conf"
+      destination = "CHANGE ME"
+  }
 }
 
 resource "aws_security_group" "java" {
   name = "app-server Security Group"
-  description = "Open SSH, HTTP, HTTPS port"
+  description = "Open SSH and 8080 port"
     dynamic "ingress" {
     for_each = var.java
     content {
