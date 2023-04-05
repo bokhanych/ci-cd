@@ -9,7 +9,7 @@ resource "aws_instance" "app-server" {
     tags = { Name = "APP-SERVER" }
     vpc_security_group_ids = [aws_security_group.java.id]
     key_name        = data.aws_key_pair.selected.key_name
-    user_data = "${file("uploads/docker-install.sh")}"
+    user_data = "${file("uploads/app-server-config.sh")}"
     provisioner "file" {
       source      = "uploads/myapp.conf"
       destination = "CHANGE ME"

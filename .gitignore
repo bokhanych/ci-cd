@@ -2,3 +2,4 @@
 .ghcr_login.sh
 terraform.*
 .terraform*
+app-server-setup.sh
