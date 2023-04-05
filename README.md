@@ -20,5 +20,7 @@ NOTES:
     Зависимости в системе: default-jdk maven net-tools || usermod -aG docker jenkins && chmod 666 /var/run/docker.sock
 
 х. ДОПИЛИТЬ: 
-    - jenkins as pipeline (если успею)
+    - jenkins as pipeline
+    - этапы проверки кода линтером
     - контейнер с мониторингом url и java порта приложения http://localhost:8080/helloworld/hello
+    - уведомление о результате сборки и развертывания в любой канал
