@@ -1,18 +1,17 @@
 **1. GITHUB**
-- Репозиторий приложения: https://github.com/bokhanych/spring-boot, в нем содержится Dockerfile для сборки. Подключен webhook.
+- Репозиторий приложения: https://github.com/bokhanych/spring-boot, в нем содержится Dockerfile для сборки. Подключен webhook для запуска билда JENKINS.
 - Используется ghcr.io как хранилище docker-image приложения.
 
 **2. APP-SERVER**
 - Поднимается через Terraform
-- Используемые скрипты настройки APP-SERVER (установка docker, ключа RSA для подключения с JENKNS и стека мониторинга Prometheus, Grafana, Node-explorer):
-   1. ssh-rsa-setup.sh (.gitignore). Его содержимое: mkdir /root/.ssh/ && echo "ssh-rsa YOUR_KEY" > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys
+- Используемые скрипты настройки APP-SERVER:
+   1. ssh-git-setup.sh (.gitignore). Его содержимое: mkdir /root/.ssh/ && echo "ssh-rsa YOUR_KEY" > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys - добавляет ключ SSH и .ghcr_login.sh - скрипт для логина на ghcr.io
    2. docker-install.sh - установка Docker
    3. monitoring-setup.sh - установка Prometheus, Grafana, Node-explorer
-   4. ssh-git-setup.sh (.gitignore). Создает .ghcr_login.sh - скрипт для логина на ghcr.io
 - Приложение запускается по адресу http://APP-SERVER-IP:8080/helloworld/hello
 
 **3. JENKINS**
-- Поднимается вручную
+- Поднимается вручную, необходимо вписать IP адрес APP-SERVER в Build-Job
 - Используемые скрипты настройки JENKINS:
    1. jenkins-install.sh - установка jenkins
    2. docker-install.sh - установка Docker
