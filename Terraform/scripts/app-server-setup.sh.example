@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# RSA key add
+mkdir /root/.ssh/ && echo "ssh-rsa YOUR_KEY" > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys
