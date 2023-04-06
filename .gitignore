@@ -4,4 +4,4 @@ terraform.*
 .terraform*
 
 .ghcr_login.sh
-ssh-rsa-setup.sh
+ssh-git-setup.sh
