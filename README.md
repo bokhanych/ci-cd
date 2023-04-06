@@ -4,7 +4,7 @@
 
 **2. APP-SERVER**
 - Поднимается через Terraform
-- Используемые скрипты настройки APP-SERVER:
+- Используемые скрипты настройки APP-SERVER (все в одном user_data.sh):
    1. ssh-git-setup.sh (.gitignore). Его содержимое: mkdir /root/.ssh/ && echo "ssh-rsa YOUR_KEY" > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys - добавляет ключ SSH и .ghcr_login.sh - скрипт для логина на ghcr.io
    2. docker-install.sh - установка Docker
    3. monitoring-setup.sh - установка Prometheus, Grafana, Node-explorer
