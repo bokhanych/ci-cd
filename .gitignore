@@ -1,5 +1,7 @@
 /spring-boot
-.ghcr_login.sh
+
 terraform.*
 .terraform*
-app-server-setup.sh
+
+.ghcr_login.sh
+ssh-rsa-setup.sh

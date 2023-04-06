@@ -1,4 +1,0 @@
-export PAT=<YOUR_TOKEN>>
-export GIT_USER=<YOUR_USERNAME>
-
-echo $PAT | docker login ghcr.io --username $GIT_USER --password-stdin
