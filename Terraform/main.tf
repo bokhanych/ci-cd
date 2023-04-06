@@ -14,7 +14,7 @@ resource "aws_instance" "app-server" {
 
 resource "aws_security_group" "java" {
   name = "app-server Security Group"
-  description = "Open SSH and 8080 port"
+  description = "Open SSH, Java and monitoring ports"
     dynamic "ingress" {
     for_each = var.java
     content {

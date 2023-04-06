@@ -5,18 +5,10 @@ variable "instance_type" {
 
 variable "java" {
     type = list
-    default = ["22", "8080"]
+    default = ["22", "8080", "3000", "9090", "9100"]
 }
 
 variable "aws_key_pair_name" {
   type = string
   default = "tf_user"
 }
-
-
-/*
-variable "app-server_ports" {
-    type = list
-    default = ["22", "8080"]
-}
-*/
