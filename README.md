@@ -9,7 +9,7 @@
 **3. JENKINS**
 - Поднимается вручную, настраивается скриптом jenkins-server-setup.sh + добавляются ключи SSH и скрипт для логина на ghcr.io
 - localhost Build Steps: сборка приложения и отправка docker image в container registry
-- server-app Build Steps: если требуется, очистка от старого docker container и docker image, скачивание нового docker image и запуск контейнера
+- server-app Build Steps: если требуется, очистка от старого docker container и docker image, скачивание и запуск нового docker image
 
 **NOTES**:
 - .ghcr_login.sh.example - скрипт для логина на github, убрать расширение .example, изменить переменные, поместить на jenkins и app-сервер в /home/
