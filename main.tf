@@ -9,7 +9,11 @@ resource "aws_instance" "app-server" {
     tags = { Name = "APP-SERVER" }
     vpc_security_group_ids = [aws_security_group.java.id]
     key_name        = data.aws_key_pair.selected.key_name
-    user_data = "${file("scripts/user_data.sh")}"
+    user_data = <<EOF
+${file("scripts/docker-install.sh")}
+${file("scripts/ssh-git-setup.sh")}
+${file("scripts/monitoring-setup.sh")}
+EOF
 }
 
 resource "aws_security_group" "java" {
