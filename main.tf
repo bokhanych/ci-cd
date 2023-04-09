@@ -12,7 +12,7 @@ resource "aws_instance" "app-server" {
     user_data = <<EOF
 ${file("scripts/docker-install.sh")}
 ${file("scripts/ssh-git-setup.sh")}
-${file("scripts/monitoring-setup.sh")}
+${file("scripts/monitoring-v2.sh")}
 EOF
 }
 

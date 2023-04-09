@@ -5,7 +5,7 @@ variable "instance_type" {
 
 variable "java" {
     type = list
-    default = ["22", "8080", "3000", "9090", "9100"]
+    default = ["22", "8080", "3000", "9090", "9115"]
 }
 
 variable "aws_key_pair_name" {

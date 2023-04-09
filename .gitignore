@@ -1,7 +1,4 @@
 /spring-boot
-
 terraform.*
 .terraform*
-
-.ghcr_login.sh
 ssh-git-setup.sh
