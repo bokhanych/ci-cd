@@ -87,7 +87,8 @@ providers:
   options:
     path: /etc/grafana/provisioning/dashboards
 EOF
-cd /tmp && git clone https://github.com/bokhanych/ci-cd.git && cp ci-cd/grafana-dashboard/docker-url_by_bokhanych.json /etc/grafana/dashboards/ && rm -r ci-cd
+
+cd /tmp && git clone https://github.com/bokhanych/ci-cd.git && cp ci-cd/grafana/dashboard.json /etc/grafana/dashboards/ && rm -r /tmp/* >> /dev/null 2>&1
 
 # Prometheus-config
 mkdir /etc/prometheus
