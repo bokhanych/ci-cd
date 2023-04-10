@@ -55,8 +55,9 @@ services:
 EOF
 
 # Grafana-datasources
-mkdir -p /etc/grafana/provisioning/datasources
-cat << EOF > /etc/grafana/provisioning/datasource.yml
+mkdir /etc/grafana/
+touch /etc/grafana/datasource.yml
+cat << EOF > /etc/grafana/datasource.yml
 apiVersion: 1
 
 datasources:
@@ -69,7 +70,7 @@ datasources:
 EOF
 
 # Prometheus-config
-mkdir -p /etc/prometheus
+mkdir /etc/prometheus
 cat << EOF > /etc/prometheus/prometheus.yml
 # Set global configuration
 global:
@@ -108,7 +109,7 @@ EXTERNAL_IP=$(hostname  -I | cut -f1 -d' ');
 sed -i "s%localhost%$EXTERNAL_IP%g" /etc/prometheus/prometheus.yml;
 
 # Blackbox-config
-mkdir -p /etc/blackbox
+mkdir /etc/blackbox
 cat << EOF > /etc/blackbox/blackbox.yml
 modules:
   http_2xx:
@@ -124,3 +125,5 @@ modules:
 EOF
 
 cd /etc/ && docker compose up -d
+
+# CLEAR: cd /etc && docker kill $(docker ps -q) && docker system prune -a -f && rm -r /etc/grafana /etc/prometheus /etc/blackbox /etc/docker-compose.yml && rm /etc/docker/daemon.json
