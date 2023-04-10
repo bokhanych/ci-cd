@@ -67,8 +67,7 @@
   "panels": [
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+        "type": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -143,8 +142,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "type": "prometheus"
           },
           "editorMode": "builder",
           "expr": "engine_daemon_container_states_containers{state=\"running\"}",
@@ -158,8 +156,7 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+        "type": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -236,8 +233,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "type": "prometheus"
           },
           "editorMode": "builder",
           "expr": "probe_http_status_code{instance=\"http://192.168.100.222:3000\"}",
@@ -251,8 +247,7 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+        "type": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -329,8 +324,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "type": "prometheus"
           },
           "editorMode": "builder",
           "expr": "probe_http_status_code{instance=\"http://192.168.100.222:9115\"}",
@@ -344,8 +338,7 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+        "type": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -422,8 +415,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "type": "prometheus"
           },
           "editorMode": "builder",
           "expr": "probe_http_status_code{instance=\"http://192.168.100.222:9090\"}",
@@ -437,8 +429,7 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+        "type": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -515,8 +506,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "type": "prometheus"
           },
           "editorMode": "builder",
           "expr": "probe_http_status_code{instance=\"http://192.168.100.222:8080/helloworld/hello\"}",
@@ -530,8 +520,7 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
+        "type": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -632,8 +621,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "type": "prometheus"
           },
           "editorMode": "builder",
           "expr": "engine_daemon_container_states_containers{state=\"running\"}",
