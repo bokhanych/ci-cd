@@ -10,8 +10,8 @@ resource "aws_instance" "app-server" {
     vpc_security_group_ids = [aws_security_group.java.id]
     key_name        = data.aws_key_pair.selected.key_name
     user_data = <<EOF
-${file("scripts/docker-install.sh")}
 ${file("scripts/ssh-git-setup.sh")}
+${file("scripts/docker-install.sh")}
 ${file("scripts/monitoring-setup.sh")}
 EOF
 }
