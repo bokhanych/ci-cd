@@ -1,4 +1,6 @@
 #!/bin/bash
+EXTERNAL_IP=$(hostname  -I | cut -f1 -d' ');
+
 touch /etc/docker/daemon.json
 cat << EOF > /etc/docker/daemon.json
 {
@@ -89,6 +91,7 @@ providers:
 EOF
 
 cd /tmp && git clone https://github.com/bokhanych/ci-cd.git && cp ci-cd/grafana/dashboard.json /etc/grafana/dashboards/ && rm -r /tmp/* >> /dev/null 2>&1
+sed -i "s%192.168.100.222%$EXTERNAL_IP%g" /etc/grafana/dashboards/dashboard.json;
 
 # Prometheus-config
 mkdir /etc/prometheus
@@ -126,7 +129,7 @@ scrape_configs:
       - target_label: __address__
         replacement: blackbox:9115
 EOF
-EXTERNAL_IP=$(hostname  -I | cut -f1 -d' ');
+
 sed -i "s%localhost%$EXTERNAL_IP%g" /etc/prometheus/prometheus.yml;
 
 # Blackbox-config
