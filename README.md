@@ -27,5 +27,3 @@
 **ДОПИЛИТЬ:** 
 - jenkins as pipeline
 - мониторинг url и java порта приложения http://localhost:8080/helloworld/hello
-
-НЕ ЗАБЫТЬ ОТКРЫТЬ ПОРТЫ

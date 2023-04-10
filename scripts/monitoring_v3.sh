@@ -123,4 +123,4 @@ modules:
     timeout: 5s
 EOF
 
-cd /etc/monitoring && docker compose up -d
+cd /etc/ && docker compose up -d
