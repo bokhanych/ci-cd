@@ -8,21 +8,21 @@ cat << EOF > /etc/docker/daemon.json
 EOF
 service docker restart
 
-mkdir /etc/monitoring/
-cat << EOF > /etc/monitoring/docker-compose.yml
+cat << EOF > /etc/docker-compose.yml
 version: '3.7'
 services:
     prometheus:
       image: prom/prometheus:latest
       container_name: prometheus
       volumes:
-      - ./prometheus/:/etc/monitoring/prometheus/
+      - ./prometheus/:/etc/prometheus/
       command:
-      - '--config.file=/etc/monitoring/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
+      - '--config.file=/etc/prometheus/prometheus.yml'
       ports:
       - '9090:9090'
       restart: unless-stopped
+      networks:
+      - default
     blackbox:
       image: prom/blackbox-exporter:latest
       container_name: blackbox
@@ -30,12 +30,14 @@ services:
       depends_on:
       - prometheus
       command:
-      - "--config.file=/etc/monitoring/blackbox/blackbox.yml"
+      - "--config.file=/etc/blackbox/blackbox.yml"
       volumes:
-      - ./blackbox/:/etc/monitoring/blackbox/
+      - ./blackbox/:/etc/blackbox/
       ports:
       - '9115:9115'
       restart: unless-stopped
+      networks:
+      - default
     grafana:
       image: grafana/grafana:latest
       container_name: grafana
@@ -47,15 +49,16 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
       volumes:
-      - ./grafana:/etc/monitoring/grafana/provisioning/datasources
-volumes:
-  prom_data:
+      - ./grafana:/etc/grafana/provisioning/datasources
+      networks:
+      - default
 EOF
 
 # Grafana-datasources
-mkdir -p /etc/monitoring/grafana/provisioning/datasources
-cat << EOF > /etc/monitoring/grafana/provisioning/datasource.yml
+mkdir -p /etc/grafana/provisioning/datasources
+cat << EOF > /etc/grafana/provisioning/datasource.yml
 apiVersion: 1
+
 datasources:
 - name: Prometheus
   type: prometheus
@@ -66,8 +69,8 @@ datasources:
 EOF
 
 # Prometheus-config
-mkdir -p /etc/monitoring/prometheus
-cat << EOF > /etc/monitoring/prometheus/prometheus.yml
+mkdir -p /etc/prometheus
+cat << EOF > /etc/prometheus/prometheus.yml
 # Set global configuration
 global:
   scrape_interval:     15s
@@ -101,13 +104,12 @@ scrape_configs:
       - target_label: __address__
         replacement: blackbox:9115
 EOF
-
 EXTERNAL_IP=$(hostname  -I | cut -f1 -d' ');
-sed -i "s%localhost%$EXTERNAL_IP%g" /etc/monitoring/prometheus/prometheus.yml;
+sed -i "s%localhost%$EXTERNAL_IP%g" /etc/prometheus/prometheus.yml;
 
 # Blackbox-config
-mkdir -p /etc/monitoring/blackbox
-cat << EOF > /etc/monitoring/blackbox/blackbox.yml
+mkdir -p /etc/blackbox
+cat << EOF > /etc/blackbox/blackbox.yml
 modules:
   http_2xx:
     http:
@@ -120,7 +122,5 @@ modules:
     prober: http
     timeout: 5s
 EOF
-
-
 
 cd /etc/monitoring && docker compose up -d
