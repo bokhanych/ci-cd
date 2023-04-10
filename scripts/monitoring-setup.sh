@@ -144,15 +144,4 @@ modules:
     timeout: 5s
 EOF
 
-#cd /etc/ && docker compose up -d
-
-
-
-# CHANGE:
-# cd ~ && vi mon.sh
-
-# RUN: 
-# cd ~ && bash mon.sh
-
-# CLEAR: 
-# cd /etc && docker kill $(docker ps -q) && docker system prune -a -f && rm -r /etc/grafana /etc/prometheus /etc/blackbox /etc/docker-compose.yml && rm /etc/docker/daemon.json
+cd /etc/ && docker compose up -d
