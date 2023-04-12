@@ -1,4 +1,4 @@
-**1. GITHUB**
+**1. GitHub**
 - Репозиторий приложения: https://github.com/bokhanych/spring-boot, в нем содержится Dockerfile для сборки. 
 - Подключен webhook для запуска билда JENKINS.
 - Используется ghcr.io как хранилище docker-image приложения.
@@ -24,7 +24,7 @@
 - DEPENDENCIES: default-jdk maven || usermod -aG docker jenkins && chmod 666 /var/run/docker.sock
 
 **4. MONITORING**
-- Используется Grafana+Prometheus+Blackbox+Docker-metrics. Поднимается автоматически, с dashboard. Мониторит url приложения и docker containers.
+- Используется Grafana+Prometheus+Blackbox+Docker-metrics. Поднимается автоматически, с dashboard. Мониторит URL приложения и docker containers.
 
 **NOTES**:
 - Приложение запускается по адресу http://APP-SERVER-IP:8080/helloworld/hello
