@@ -1,5 +1,6 @@
 **1. GITHUB**
-- Репозиторий приложения: https://github.com/bokhanych/spring-boot, в нем содержится Dockerfile для сборки. Подключен webhook для запуска билда JENKINS.
+- Репозиторий приложения: https://github.com/bokhanych/spring-boot, в нем содержится Dockerfile для сборки. 
+- Подключен webhook для запуска билда JENKINS.
 - Используется ghcr.io как хранилище docker-image приложения.
 - Подключен Linter: [![GitHub Super-Linter](https://github.com/bokhanych/spring-boot/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
