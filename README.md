@@ -1,9 +1,8 @@
-**1. GitHub**
+**1. GITHUB**
 - Репозиторий приложения: https://github.com/bokhanych/spring-boot, в нем содержится Dockerfile для сборки. 
 - Подключен webhook для запуска билда JENKINS.
 - Используется ghcr.io как хранилище docker-image приложения.
-- Подключен Linter к spring-boot: [![GitHub Super-Linter](https://github.com/bokhanych/spring-boot/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-- Подключен Linter к ci-cd: [![GitHub Super-Linter](https://github.com/bokhanych/ci-cd/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+- Подключен Super Linter, при коммите в любую ветку репозитория запускаются этапы проверки кода.
 
 **2. APP-SERVER**
 - Создается с помощью Terraform командой terraform apply в папке проекта. После созданий необходимо вписать IP адрес в Глобальные настройки Jenkins
