@@ -3,7 +3,7 @@
 - Подключен webhook для запуска билда JENKINS.
 - Используется ghcr.io как хранилище docker-image приложения.
 - Подключен Linter к spring-boot: [![GitHub Super-Linter](https://github.com/bokhanych/spring-boot/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-- Подключен Linter к ci-cd: 
+- Подключен Linter к ci-cd: [![GitHub Super-Linter](https://github.com/bokhanych/ci-cd/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 **2. APP-SERVER**
 - Создается с помощью Terraform командой terraform apply в папке проекта. После созданий необходимо вписать IP адрес в Глобальные настройки Jenkins
