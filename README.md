@@ -11,14 +11,12 @@
    2. docker-install.sh - установка Docker
    3. monitoring-setup.sh - установка Prometheus, Grafana, Blackbox, docker-metrics.
 
-**3. JENKINS**
-- Создается вручную.
+**3. JENKINS-SERVER**
+- Создается вручную, используется Jenkinsfile из репозитория.
 - Используемые скрипты настройки JENKINS:
    1. jenkins-install.sh - установка jenkins
    2. docker-install.sh - установка Docker
    3. ghcr_login.sh - скрипт для логина на ghcr.io
-- localhost Build Steps: сборка приложения и отправка docker image в container registry
-- server-app Build Steps: если требуется, очистка от старого docker container и docker image, скачивание и запуск нового docker image
 - уведомление о результате сборки на почту gmail
 - DEPENDENCIES: default-jdk maven || usermod -aG docker jenkins && chmod 666 /var/run/docker.sock
 
@@ -28,6 +26,3 @@
 
 **NOTES**:
 - Приложение запускается по адресу http://APP-SERVER-IP:8080/helloworld/hello
-
-**Планы на будущее:** 
-- jenkins as pipeline
