@@ -12,7 +12,7 @@
    3. monitoring-setup.sh - установка Prometheus, Grafana, Blackbox, docker-metrics.
 
 **3. JENKINS**
-- Создается вручную, 
+- Создается вручную.
 - Используемые скрипты настройки JENKINS:
    1. jenkins-install.sh - установка jenkins
    2. docker-install.sh - установка Docker
@@ -23,11 +23,11 @@
 - DEPENDENCIES: default-jdk maven || usermod -aG docker jenkins && chmod 666 /var/run/docker.sock
 
 **4. MONITORING**
-- Используется Grafana+Prometheus+Blackbox+Docker-metrics. Поднимается автоматически, с dashboard. Мониторит URL приложения и docker containers.
+- Используется Grafana+Prometheus+Blackbox+Docker-metrics. Поднимается автоматически, с dashboard, размещенном в этом репозитории. 
+- Мониторит URL приложения и docker containers.
 
 **NOTES**:
 - Приложение запускается по адресу http://APP-SERVER-IP:8080/helloworld/hello
 
-**Для будущих релизов:** 
-- проверка кода в test-brache
+**Планы на будущее:** 
 - jenkins as pipeline
